@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<style>
+    .slide-transition {
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .top-animation {
+            animation: slideIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+.modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+</style>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <div class="grid grid-cols-2 gap-8">
+            <div class="right"></div>
+            <div class="left">
+                <div class="relative inline-block text-left">
+                    <button type="button"
+                        class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300"
+                        id="options-menu" aria-haspopup="true" aria-expanded="true">
+                        gender
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M6.293 8.293a1 1 0 011.414 0L10 10.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                
+                    <div class=" dropdown-menu origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                        role="menu" aria-orientation="vertical" aria-labelledby="options-menu" id="dropdown-menu">
+                        <div class="py-1" role="none">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                role="menuitem">Option 1</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                role="menuitem">Option 2</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                role="menuitem">Option 3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="slide" class="mt-8 slide-transition">
+            <div class="top grid grid-cols-2 gap-8 top-animation">
+                <div class="left">
+                    <div class="content">
+                        <h1 class="text-2xl font-semibold mb-4">Sign up</h1>
+                        <form action="" method="post" onsubmit="return false">
+                            <div class="mb-4">
+                                <input type="text" placeholder="Email"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                            </div>
+                            <div class="mb-4">
+                                <input type="password" placeholder="Password"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                            </div>
+                            <button id="leftToRight"
+                                class="on-off bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+                                Register
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="content">
+                        <h2 class="text-xl font-semibold mb-4">Login</h2>
+                        <form action="" method="post" onsubmit="return false">
+                            <div class="mb-4">
+                                <input type="text" placeholder="Email"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                            </div>
+                            <div class="mb-4">
+                                <input type="password" placeholder="Password"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                            </div>
+                            <button id="rightToLeft"
+                                class="on-off bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+                                Register
+                            </button>
+                            <button
+                                class="bg-gray-300 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none focus:ring focus:ring-blue-300">
+                                Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content max-w-md">
+            <h2 class="text-2xl font-semibold mb-4">Modal Window</h2>
+            <p>This is a modal window. You can display additional information, messages, or forms here.</p>
+            <button id="closeModal"
+                class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">Close</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+                $("#rightToLeft").on("click", function () {
+                    let email = $("#rightEmail").val();
+                    let password = $("#rightPassword").val();
+
+                    if (!isValidEmail(email)) {
+                        alert("Please enter a valid email address.");
+                        return;
+                    }
+
+                    if (password.length < 6) {
+                        alert("Password should be at least 6 characters long.");
+                        return;
+                    }
+                });
+                function isValidEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                }
+
+                $("#openModal").on("click", function () {
+                $("#myModal").css("display", "flex");
+            });
+
+            $("#closeModal").on("click", function () {
+                $("#myModal").css("display", "none");
+            });
+
+            $("#dropdown-btn").on("click", function () {
+                $("#dropdown-menu").toggleClass("active");
+            });
+            });
+    </script>
+</body>
+</html>
